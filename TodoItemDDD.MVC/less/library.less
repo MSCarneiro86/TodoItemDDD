@@ -1,0 +1,177 @@
+
+/* --------------------------------------------------------------
+RESET
+----------------------------------------------------------------- */
+
+* { margin:0; padding:0; outline:none; border:0; list-style-type:none; text-decoration:none; list-style-image:none; box-sizing:border-box;}
+
+html{font-size:100%; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%;}
+header, section, footer, article, figcaption, hgroup, figure, details, aside, img, nav, time, bloquote, svg {display:block;}
+audio, canvas, video {display:inline-block;*display:inline;*zoom:1;}
+audio:not([controls]){display:none;}
+[hidden]{display:none;}
+
+object[type="application/gas-events-uni"] {width:0; height:0; position:absolute; overflow:hidden; display:block; text-indent:-999999px}
+
+input[type="search"], input[type="submit"] {-webkit-appearance:textfield; -moz-box-sizing:content-box; -webkit-box-sizing:content-box; box-sizing:content-box; border-radius:0; -webkit-border-radius:0;}
+
+/* --------------------------------------------------------------
+DEFAULT STYLES
+----------------------------------------------------------------- */
+
+html,body {height:100%;}
+
+/* FORMATING CLASSES
+---------------------------- */
+
+.clear {clear:both;}
+.hide {width:0; height:0; position:absolute; overflow:hidden; display:block; text-indent:-999999px}
+hr {display:none;}
+
+.rotate(@grau : 20.20deg){
+  -moz-transform: rotate(@grau);
+  -webkit-transform: rotate(@grau);
+  -o-transform: rotate(@grau);
+  -ms-transform: rotate(@grau);
+  transform: rotate(@grau);
+}
+
+/* BACKGROUNDS */
+
+.bgCover(@cor : rgba(25,25,25,0.9), @att : inherit) {
+  -webkit-background-size:cover;
+  -moz-background-size:cover;
+  -o-background-size:cover;
+  background-size:cover;
+  background-repeat:no-repeat;
+  background-position:center center;
+  background-color:@cor;
+  background-attachment: @att;
+}
+
+.bgContain(@cor : rgba(25,25,25,0.9), @att : inherit) {
+  -webkit-background-size:contain;
+  -moz-background-size:contain;
+  -o-background-size:contain;
+  background-size:contain;
+  background-repeat:no-repeat;
+  background-position:center center;
+  background-color:@cor;
+  background-attachment: @att;
+}
+
+/* COLORS */
+
+@azulEscuro : #105182;
+@azulClaro : #1c6499;
+@azulHover : #003054;
+@amarelo : #ffcc26;
+@amareloHover: #e7b101;
+
+/* FONTS */
+
+@font-face
+{
+  font-family:'Tahoma';
+  src:  url('../fontes/Tahoma.eot?#iefix') format('embedded-opentype'),
+        url('../fontes/Tahoma.woff') format('woff'),
+        url('../fontes/Tahoma.ttf') format('truetype'),
+        url('../fontes/Tahoma.svg#Tahoma') format('svg');
+  font-weight:normal;
+  font-style:normal;
+}
+
+
+@font-face
+{
+  font-family:'Tahoma-Bold';
+  src:  url('../fontes/Tahoma-Bold.eot?#iefix') format('embedded-opentype'),
+        url('../fontes/Tahoma-Bold.woff') format('woff'),
+        url('../fontes/Tahoma-Bold.ttf') format('truetype'),
+        url('../fontes/Tahoma-Bold.svg#Tahoma-Bold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.font(@size : 14px, @weight : 400, @lineHeight : 18px, @cor : #000, @style : normal, @upper : none)
+{
+  font-family:'Tahoma';
+  font-size:@size;
+  font-weight:@weight;
+  line-height:@lineHeight;
+  color:@cor;
+  font-style:@style;
+  text-transform:@upper;
+}
+
+.fontaws(@content : "\f000", @size : 18px, @cor : #000){
+  font-family:FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+  content:@content;
+  color:@cor;
+  font-size:@size;
+}
+
+/* EFFECTS */
+
+.transition(@time : 400ms, @animation : ease){
+  -webkit-transition:all @time @animation; /* Safari */
+  transition:all @time @animation;
+}
+
+.placeholder(@cor : rgba(0,0,0,0.5), @style : normal){
+  ::-webkit-input-placeholder {color:@cor; opacity:1; font-style:@style}
+  ::-moz-placeholder {color:@cor; opacity:1; font-style:@style}
+  :-ms-input-placeholder {color:@cor; opacity:1; font-style:@style}
+  :-moz-placeholder {color:@cor; opacity:1; font-style:@style}
+}
+
+/* ELEMENTOS */
+
+.btn {
+
+  display:inline-block; height:42px; .font(14px,600,42px,#fff,normal,uppercase); padding:0 40px; text-transform:uppercase; background:@amarelo; .transition(); cursor:pointer;
+
+  &:hover {background:@amareloHover;}
+  
+}
+
+.iconCat
+{
+  
+  &.sacaria:before
+  {
+    content:"";
+    display:inline-block;
+    width:62px;
+    height:40px;
+    background:url(../images/icon-sacaria.png) no-repeat;
+    background-size:auto 100%;
+    margin-right:10px;
+    vertical-align:middle;
+    position:relative;
+    top:-3px;
+  }
+  
+  &.blocos:before
+  {
+    content:"";
+    display:inline-block;
+    width:37px;
+    height:40px;
+    background:url(../images/icon-blocos.png) no-repeat;
+    background-size:auto 100%;
+    margin-right:10px;
+    vertical-align:middle;
+    position:relative;
+    top:-3px;
+  }
+
+  @media (max-width : 1024px)
+  {
+    &.sacaria:before {height:30px; width:46px;}
+    &.blocos:before {height:30px; width:28px; top:-1px}
+  }
+}

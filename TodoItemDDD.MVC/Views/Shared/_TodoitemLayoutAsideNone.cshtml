@@ -1,0 +1,95 @@
+﻿@using System.Web.UI.WebControls
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>TodoItem</title>
+    <script src="https://use.fontawesome.com/6b3a6e5ca7.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/theme.min.css">
+
+</head>
+<body>
+    <header id="mainHeader">
+        <div class="container">
+            <div class="row pt-0 pt-lg-5">
+                <div class="head col-12">
+                    <h1 class="col-6 col-lg-3 float-left">
+                        <a href="#">
+                            <span class="hide">TodoItem</span>
+                            <img src="/images/logo-todoitem.png" alt="Logo da empresa Todoitem">
+                        </a>
+                    </h1>
+                    <div class="col-lg-4 float-left">
+                        <div class="selectField">
+                            <select id="selectCidade">
+                                <option>Todas as Cidades</option>
+                            </select>
+                            <span><i class="fa fa-angle-down"></i></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 float-left">
+                        <form id="searchForm" method="post" action="#">
+                            <input type="search" name="search" placeholder="Digite aqui o que você procura...">
+                            <button form="searchForm">Buscar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @{
+            Html.RenderAction("Menu", "Home");
+        }
+       
+        <div class="login">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="container">
+        <section id="categoryList" class="col-12 col-lg-12 float-right">
+            @RenderBody()
+        </section>
+    </main>
+
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="../js/scripts.min.js"></script>
+<script>
+$(function () {
+    $.ajax({
+        dataType: "json",
+        type: "GET",
+        url: "/Home/ObterCidades",
+        success: function (dados) {
+            $(dados).each(function (i) {
+                $("#selectCidade").append("<option value=" + dados[i].EnderecoId + ">" + dados[i].Cidade + "</option>");
+               
+            });
+        }
+    });
+});
+</script>
+
+
+   
+
+
+   
+
+
+
+
+
+</body>
+</html>

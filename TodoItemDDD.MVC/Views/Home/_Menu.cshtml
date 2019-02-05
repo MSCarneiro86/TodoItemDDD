@@ -1,0 +1,50 @@
+﻿@model IEnumerable<TodoItemDDD.Domain.Entities.Categoria>
+
+<div class="filtros">
+    <div class="container">
+        <div class="row">
+            <div class="responsive">
+                <div class="selectCat">
+                    <a href="#" class="selectbar">Categorias</a>
+                </div>
+                <nav class="options">
+                    <a class="closeMenu"><i class="fa fa-times" aria-hidden="true"></i></a>
+                    <div class="scroll">
+                        <ul class="mainMenu">
+                            @{
+                                int i = 0;
+                                int f = 0;
+                            }
+
+                            @foreach (var item in Model)
+                            {
+                                if (i >= 6) { break; }
+
+                                <li class="mainList">
+                                    <h3>@item.NomeCategoria</h3>
+                                    <div class="wrapMenu">
+                                        <ul>
+                                            @foreach (var filho in item.CateogirasFilho)
+                                            {
+                                                if (f >= 6)
+                                                {
+                                                    break;
+
+                                                }
+                                                <li><a href="@filho.Controller/@filho.Action">@filho.NomeCategoria</a></li>
+
+                                                f++;
+                                            }
+                                        </ul>
+                                    </div>
+                                </li>
+                                i++;
+                            }
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
